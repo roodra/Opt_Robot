@@ -1,0 +1,10 @@
+^C:\WORKSPACE\OPT_ROBOT\BUILD\CMAKEFILES\288CE382A8F462616AD6FFE23A8F8043\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Workspace/Opt_Robot -BC:/Workspace/Opt_Robot/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Workspace/Opt_Robot/build/Main.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

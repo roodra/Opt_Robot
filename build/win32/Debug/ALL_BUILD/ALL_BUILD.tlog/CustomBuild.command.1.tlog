@@ -1,0 +1,10 @@
+^C:\WORKSPACE\OPT_ROBOT\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Workspace/Opt_Robot -BC:/Workspace/Opt_Robot/build --check-stamp-file C:/Workspace/Opt_Robot/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
