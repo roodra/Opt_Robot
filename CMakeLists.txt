@@ -29,6 +29,7 @@ add_executable(Main
     src/physics/mujoco/MuJoCoEngine.cpp
     src/problems/swingup/SwingUpProblem.cpp
     src/optimization/random_search/RandomSearch.cpp
+    src/optimization/simulated_annealing/SimulatedAnnealing.cpp
 )
 target_include_directories(Main PRIVATE src)
 target_link_libraries(Main PRIVATE mujoco)
