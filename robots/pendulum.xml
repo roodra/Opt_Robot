@@ -1,0 +1,36 @@
+<mujoco model="pendulum">
+
+  <!--
+    Simple pendulum: pivot fixed at world origin, pole hangs along -Z.
+    Convention:
+      qpos[0] = 0   -> hanging straight down (stable equilibrium)
+      qpos[0] = pi  -> pointing straight up   (swing-up goal)
+    Rotation is around the Y axis, so motion is in the XZ plane.
+  -->
+
+  <option timestep="0.02" integrator="RK4" gravity="0 0 -9.81"/>
+
+  <worldbody>
+    <body name="pole" pos="0 0 0">
+      <joint name="hinge" type="hinge" axis="0 1 0" limited="false"/>
+      <!-- Pole: thin capsule from pivot to bob -->
+      <geom type="capsule" fromto="0 0 0 0 0 -1" size="0.04" mass="0.1"/>
+      <!-- Bob: 1 kg sphere at the end of the pole -->
+      <body name="bob" pos="0 0 -1">
+        <geom type="sphere" size="0.1" mass="1.0"/>
+        <site name="tip" size="0.01"/>
+      </body>
+    </body>
+  </worldbody>
+
+  <!-- Single motor applying torque at the hinge; clamped to [-5, 5] Nm -->
+  <actuator>
+    <motor name="motor" joint="hinge" gear="1" ctrlrange="-5 5"/>
+  </actuator>
+
+  <sensor>
+    <jointpos name="theta"     joint="hinge"/>
+    <jointvel name="theta_dot" joint="hinge"/>
+  </sensor>
+
+</mujoco>
