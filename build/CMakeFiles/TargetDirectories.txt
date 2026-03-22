@@ -1,3 +1,0 @@
-/home/roodra/Opt_Robot/build/CMakeFiles/Main.dir
-/home/roodra/Opt_Robot/build/CMakeFiles/edit_cache.dir
-/home/roodra/Opt_Robot/build/CMakeFiles/rebuild_cache.dir
