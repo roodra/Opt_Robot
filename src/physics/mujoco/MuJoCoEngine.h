@@ -25,6 +25,11 @@ public:
 
     int getNumJoints() const override;
 
+    // Raw model/data accessors for engine-specific tools (e.g. the viewer).
+    // Returns void* to keep MuJoCo headers out of this header.
+    void* getModel() const { return m_model; }
+    void* getData()  const { return m_data;  }
+
 private:
     // Opaque pointers — cast to mjModel*/mjData* inside the .cpp only.
     void* m_model = nullptr;

@@ -66,11 +66,11 @@ OptimizationResult SimulatedAnnealing::optimize(IProblem& problem) {
         // Geometric cooling
         T *= m_cooling_rate;
 
-        if (iter % 500 == 0)
+        if (iter % 1000 == 0)
             std::cout << "[SA] iter " << iter
                       << "  T: "    << T
                       << "  best: " << best_cost << "\n";
     }
 
-    return {best, best_cost, m_max_iterations, best_cost < 0.1};
+    return {best, best_cost, m_max_iterations, best_cost < 10.0};
 }

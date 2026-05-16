@@ -40,12 +40,13 @@ Add the shared library to your runtime path (add to `~/.bashrc` to make permanen
 export LD_LIBRARY_PATH=$HOME/.local/mujoco-3.2.3/lib:$LD_LIBRARY_PATH
 ```
 
-## Build
+## Build and Run
+
+### 1. Configure and build
 
 ```bash
 cmake -B build
 cmake --build build
-./build/Main
 ```
 
 If MuJoCo is installed somewhere other than `~/.local/mujoco-3.2.3`, pass its path at configure time:
@@ -53,6 +54,20 @@ If MuJoCo is installed somewhere other than `~/.local/mujoco-3.2.3`, pass its pa
 ```bash
 cmake -B build -DMUJOCO_DIR=/path/to/mujoco-3.2.3
 ```
+
+### 2. Run the optimisation
+
+```bash
+./build/Main
+```
+
+This runs three optimisation algorithms in sequence on the pendulum swing-up problem:
+
+1. **Random Search** — 500 iterations, used as a baseline.
+2. **Simulated Annealing** — 5000 iterations with exponential cooling.
+3. **Genetic Algorithm** — 100-individual population evolved over 200 generations.
+
+Each algorithm prints its progress and final result (best cost, convergence status, final joint angle). Once all three finish, the best result is replayed in an interactive MuJoCo viewer window — scroll to zoom, press **ESC** to close.
 
 ## Dependencies
 

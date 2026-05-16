@@ -24,15 +24,20 @@ set_target_properties(mujoco PROPERTIES
 )
 
 # --- Main executable ---
+find_package(OpenGL REQUIRED)
+find_package(glfw3 REQUIRED)
+
 add_executable(Main
     src/main.cpp
     src/physics/mujoco/MuJoCoEngine.cpp
     src/problems/swingup/SwingUpProblem.cpp
     src/optimization/random_search/RandomSearch.cpp
     src/optimization/simulated_annealing/SimulatedAnnealing.cpp
+    src/optimization/genetic/GeneticAlgorithm.cpp
+    src/viewer/MuJoCoViewer.cpp
 )
 target_include_directories(Main PRIVATE src)
-target_link_libraries(Main PRIVATE mujoco)
+target_link_libraries(Main PRIVATE mujoco glfw OpenGL::GL)
 
 # Embed the MuJoCo lib path so the binary runs without LD_LIBRARY_PATH
 set_target_properties(Main PROPERTIES

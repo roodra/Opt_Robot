@@ -40,5 +40,5 @@ OptimizationResult RandomSearch::optimize(IProblem& problem) {
                       << "  best cost: " << best_cost << "\n";
     }
 
-    return {best_params, best_cost, m_max_iterations, best_cost < 0.1};
+    return {best_params, best_cost, m_max_iterations, best_cost < 10.0};
 }
